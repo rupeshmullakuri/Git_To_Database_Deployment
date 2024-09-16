@@ -1,1 +1,32 @@
+name: Deploy SQL Changes to Database
 
+on:
+  push:
+    branches:
+      - main  # Change this to your deployment branch
+
+jobs:
+  deploy-sql:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install MySQL Client
+      run: sudo apt-get install mysql-client
+
+    - name: Deploy SQL scripts to the database
+      env:
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+      run: |
+        set -e  # Exit if any command fails
+        
+        # Loop through and execute SQL scripts
+        for file in db/migrations/*.sql; do
+          echo "Running SQL script: $file"
+          mysql -h $DB_HOST -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME < $file
+        done
