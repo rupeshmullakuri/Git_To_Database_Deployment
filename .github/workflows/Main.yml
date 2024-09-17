@@ -18,7 +18,7 @@ jobs:
 
     - name: Deploy SQL scripts to the database
       env:
-        DB_HOST: 'localhost' # ${{ secrets.DB_HOST }}
+        DB_HOST: 'MULLAKURIRUPESH' # ${{ secrets.DB_HOST }}
         DB_USERNAME: 'root' #${{ secrets.DB_USERNAME }}
         DB_PASSWORD: 'Test@123' # ${{ secrets.DB_PASSWORD }}
         DB_NAME: 'ci_cd' # ${{ secrets.DB_NAME }}
