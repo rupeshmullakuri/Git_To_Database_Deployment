@@ -18,10 +18,10 @@ jobs:
 
     - name: Deploy SQL scripts to the database
       env:
-        DB_HOST: 'database-1.czea0ueo0k49.us-east-1.rds.amazonaws.com' # ${{ secrets.DB_HOST }}
-        DB_USERNAME: 'admin' #${{ secrets.DB_USERNAME }}
-        DB_PASSWORD: 'Admin_3212' # ${{ secrets.DB_PASSWORD }}
-        DB_NAME: 'rupesh1' # ${{ secrets.DB_NAME }}
+        DB_HOST: '' # ${{ secrets.DB_HOST }}
+        DB_USERNAME: '' #${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: '' # ${{ secrets.DB_PASSWORD }}
+        DB_NAME: '' # ${{ secrets.DB_NAME }}
       run: |
         set -e  # Exit if any command fails
         
